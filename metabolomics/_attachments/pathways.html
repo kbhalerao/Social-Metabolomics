@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Metabolomics</title>
+    <link rel="stylesheet" href="style/main.css" type="text/css">
+    <span style="white-space: pre;"> </span><script src="/_utils/script/json2.js"></script>  
+	<span style="white-space: pre;"> </span><script src="/_utils/script/jquery.js?1.3.1"></script>  
+	<span style="white-space: pre;"> </span><script src="/_utils/script/jquery.couch.js?0.9.0"></script>
+	<script type="text/javascript" src="js/soapclient.js"></script>
+	<span style="white-space: pre;"> 
+	</span><script type="text/javascript">
+		$db = $.couch.db("couchdb/metabolomics");
+	    dbget_uri = 'http://www.genome.jp/dbget-bin/www_bget?'
+	    var pathwayList = [];
+	    kopattern = /(map|ko)\d{5}/ig;
+	    path_num = /\d{5}/i;
+	    
+	    function makeButtons() {
+	    	
+	    	$("div#items").empty();
+	    	
+	    	 $db.view("metabolomics/known_keggIDs", {
+	            success: function(data) {
+	            	$("div#items").append('<table>');
+	            	for (i in data.rows) {  
+      					doc_id = data.rows[i].id;  
+      					name = data.rows[i].key;  
+      					keggID = data.rows[i].value.KeggID;  
+						html = '<tr>' +  
+						'<td><input class="check" type="checkbox" id="' + doc_id + '"></input></td> '+  
+						'<td>' + name + '</td> ' +  
+						'<td>' + keggID + '</td> ' +  
+						'</tr></div>';  
+                        $("div#items").append(html);
+                    }
+                    $("div#items").append("</table>");
+                }});
+	    }
+	    
+	    function updatePathways(doc, state) {
+	    	pathstring = doc.Pathways;
+	    	pathways = pathstring.match(kopattern);	 
+	    	if(state == true) { //add to table
+	    		for(path in pathways) {
+	    			if(pathwayList[pathways[path]] == undefined) {
+	    				pathwayList[pathways[path]] = 1;
+	    			}
+	    			else {
+	    				num = pathwayList[pathways[path]];
+	    				num = num+1;
+	    				pathwayList[pathways[path]] = num;
+	    			}
+	    		}
+	    	}
+	    	else { // remove from table
+	    		for(path in pathways) {
+	    			num = pathwayList[pathways[path]];
+	    			num = num -1;
+	    			pathwayList[pathways[path]] = num;
+	    		}
+	    	}
+	    	
+	    	$("div#profile").empty();
+	    	$("div#profile").append('<table id="tab" border="0"><tr><th>KO/MAP</th><th>Count</th><th>Family</th><th>Class</th></tr>');
+	    	for(path in pathwayList) {
+	    		path_key = path.match(path_num);
+	    		times = pathwayList[path];
+	    		if(times > 0) {
+	    			uri = 'http://abe-bhaleraolab.age.uiuc.edu/couchdb/metabolomics/_design/metabolomics/_view/pathways?key="';
+	    			uri = uri + path_key + '"';
+	    			$.getJSON(uri, function(data) {
+	    				
+	    				obj = data.rows;
+	    				path_name = obj[0]["key"];
+	    				row = obj[0].value;
+	    				//alert(row);
+	    				$("table#tab").append('<tr><td>' + 
+	    					'<a href=' + dbget_uri + row.Prefix+path_name + '>' + row.Prefix+path_name +  '</a></td>' +
+							'<td align="center">' + pathwayList[row.Prefix+path_name] + "</td><td>" +
+							row.Description + "</td><td>" + "  " + row.Family + 
+							'</td></tr>');
+	    				});
+	    			}
+	    		}
+	    }
+	    
+	    $(document).ready(function() {
+	    	makeButtons();
+			$("div#items").click(function(event) {
+				$tgt = $(event.target);
+				if($tgt.attr("type") == "checkbox") {
+					id = $tgt.attr("id");
+					state = $tgt.attr("checked");
+					$db.openDoc(id, { success: function(doc) {  
+        			updatePathways(doc, state);  
+      				}});
+      			}
+			});
+	    });
+	    
+	</script>
+	<span style="white-space: pre;"> </span>  
+  </head>
+  <body>
+    <div id="account"></div>
+
+    <h1>Pathway explorer</h1>
+
+    <div id="profile">
+    	<p>Select metabolites below</p>
+    </div>
+    
+    <div id="items">
+    	items here...
+    </div>
+
+    <div id="sidebar">
+      <h2>Instructions</h2>
+      <p>Click on various compounds</p>
+      <p>The pathways associated with your compounds will appear</p>
+	</div>
+  </body>
+  <script src="vendor/couchapp/loader.js"></script>
+</html>
