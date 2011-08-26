@@ -1,0 +1,9 @@
+This is a couchapp. To install this application you need a 
+working couchdb database and the couchapp framework. 
+You will also need to make your own .couchapprc file. (Can't have mine)
+
+Copyright
+Kaustubh D. Bhalerao
+University of Illinois at Urbana-Champaign
+http://abe-bhaleraolab.age.uiuc.edu
+
