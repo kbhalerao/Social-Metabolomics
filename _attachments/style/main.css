@@ -8,7 +8,7 @@ body {
 h1, h2, h3 {
   	margin: 0;
 	font-weight: normal;
-	color: #85C329;
+	color: #f6a828;
 }
 
 h1 {
@@ -55,7 +55,7 @@ ul {
 }
 
 #sidebar {
-  border:4px solid #dfd;
+  border:4px solid #cdcdcd;
   padding:8px;
   float:right;
   width:30%;
@@ -102,6 +102,6 @@ div.avatar img {
 
 table, th, td
 {
-border: 1px solid #cdcdcd;
+border: 0px solid #cdcdcd;
 padding:3px 7px 2px 7px;
 }

@@ -8,7 +8,8 @@ function makeButtons() {
     
     $("div#items").empty();
     
-    $("div#items").append('<div id="add_new"><button type="button" id="add_new">Add a new metabolite</button><p></p></div>');  
+    //$("div#items").append('<div id="add_new"><button type="button" id="add_new">Add a new metabolite</button><p></p></div>');  
+    // Create a new interface to add / remove metabolites.
     
     $db.view("metabolomics/known_keggIDs", {
         success: function(data) {
@@ -26,19 +27,17 @@ function makeButtons() {
                 $("div#items").append(html);
             }
             $("div#items").append("</table>");
-            console.log($("button"));
+			//$ui("button#add_new").button();
         }});
 }
 
 function addUpdateForm(target, existingDoc) {  
     html = '<form name="update" id="update" action=""> <table>' +  
-    '<tr><td>Name:</td><td> <input type="text" size="80" name="Name" id="Name" value="' +
-    (existingDoc ? existingDoc.Name : "") + '"/></td></tr>' +  
-    '<tr><td>KeggID:</td><td> <input type="text" name="KeggID" id="KeggID"/ value="' +  
-    (existingDoc ? existingDoc.KeggID : "") + '"></td></tr>' +  
+    //'<tr><td>Name:</td><td>' + (existingDoc ? existingDoc.Name : "") + '</td></tr>' +  
+    //'<tr><td>KeggID:</td><td>' + (existingDoc ? existingDoc.KeggID : "") + '</td></tr>' +  
     '<tr><td>HMDB Accession Number:</td><td> <input type="text" name="hmdb_id" id="hmdb_id"/ value="' +  
     (existingDoc ? existingDoc.HMDB_id : "") + '"></td></tr>' + 
-    '<tr><td>Notes:</td><td> <textarea rows="4" cols="60" name="Notes" id="Notes">' + 
+    '<tr><td>Notes:</td><td> <textarea rows="4" cols="40" name="Notes" id="Notes">' + 
     (existingDoc ? existingDoc.Notes : "") + '</textarea></td></tr>' +
     '<tr><td><input type="submit" name="submit" class="update" value="' +
     (existingDoc?"Update":"Add") + '"/></td><td>' +   
