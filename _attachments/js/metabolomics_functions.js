@@ -8,7 +8,9 @@ function makeButtons() {
     
     $("div#items").empty();
     
-     $db.view("metabolomics/known_keggIDs", {
+    $("div#items").append('<div id="add_new"><button type="button" id="add_new">Add a new metabolite</button><p></p></div>');  
+    
+    $db.view("metabolomics/known_keggIDs", {
         success: function(data) {
             $("div#items").append('<table>');
             for (i in data.rows) {  
@@ -19,10 +21,13 @@ function makeButtons() {
                 '<td><input class="check" type="checkbox" id="' + doc_id + '"></input></td> '+  
                 '<td>' + name + '</td> ' +  
                 '<td>' + keggID + '</td> ' +  
+                '<td><button class="edit" id="' + doc_id + '">edit</button></td> '+  
                 '</tr></div>';  
                 $("div#items").append(html);
             }
             $("div#items").append("</table>");
+            $ui("button").button();
+            console.log($("button"));
         }});
 }
 
@@ -70,7 +75,7 @@ function updatePathways(doc, state) {
     }
     
     $("div#profile").empty();
-    $("div#profile").append('<table id="tab" border="0"><tr><th>KO/MAP</th><th>Count</th><th>Family</th><th>Class</th></tr>');
+    $("div#profile").append('<table id="tab"><tr><th>KO/MAP</th><th>Count</th><th>Family</th><th>Class</th></tr>');
     for(path in pathwayList) {
         path_key = path.match(path_num);
         times = pathwayList[path];
@@ -95,6 +100,13 @@ function updatePathways(doc, state) {
 
 $(document).ready(function() {
     makeButtons();
+    
+    $("button#add_new").click(function(event) {     
+				$("form#update").remove();  
+				$("button#add").hide();  
+				addUpdateForm($("div#add_new"));  
+			});
+    
     $("div#items").click(function(event) {
         $tgt = $(event.target);
         if($tgt.attr("type") == "checkbox") {
@@ -104,5 +116,38 @@ $(document).ready(function() {
             updatePathways(doc, state);  
             }});
         }
+        if ($tgt.hasClass("edit")) { 
+            id = $tgt.attr("id");
+            $("button#add").show();  
+            $("form#update").remove();  
+            $db.openDoc(id, { success: function(doc) {  
+            addUpdateForm($tgt.parent(), doc);  
+            }});  
+        }	
     });
+    
+    $("input.cancel").live('click', function(event) {  
+    			$("button#add").show();  
+   				$("form#update").remove();  
+    			return false;  
+  		 	});   
+  		 	
+    $("input.update").live('click', function(event) {  
+            var $tgt = $(event.target);  
+            var $form = $tgt.parents("form#update");  
+            var $doc = $form.data('existingDoc') || {};   
+            $doc.Name = $form.find("input#Name").val();  
+            $doc.KeggID = $.trim($form.find("input#KeggID").val());  
+            $doc.HMDB_id = $.trim($form.find("input#hmdb_id").val());
+            $doc.Notes = $.trim($form.find("textarea#Notes").val());
+            $db.saveDoc(  
+                $doc,  
+                {success: function() {  
+                $("button#add").show();  
+                $("form#update").remove();  
+                makeButtons();  
+                }});  
+            return false;  
+           });  
+
 });	    
