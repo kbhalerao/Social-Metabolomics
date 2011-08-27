@@ -99,3 +99,9 @@ div.avatar img {
 #items ul {
   list-style: none;
 }
+
+table, th, td
+{
+border: 1px solid #cdcdcd;
+padding:3px 7px 2px 7px;
+}
