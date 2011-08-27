@@ -21,12 +21,11 @@ function makeButtons() {
                 '<td><input class="check" type="checkbox" id="' + doc_id + '"></input></td> '+  
                 '<td>' + name + '</td> ' +  
                 '<td>' + keggID + '</td> ' +  
-                '<td><button class="edit" id="' + doc_id + '">edit</button></td> '+  
+                '<td><a href="#" class="edit" id="' + doc_id + '">edit</a></td> '+  
                 '</tr></div>';  
                 $("div#items").append(html);
             }
             $("div#items").append("</table>");
-            $ui("button").button();
             console.log($("button"));
         }});
 }
