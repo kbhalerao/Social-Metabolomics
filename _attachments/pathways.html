@@ -4,8 +4,8 @@
     <title>Metabolomics</title>
     <link rel="stylesheet" href="style/main.css" type="text/css" />
     <script src="/_utils/script/json2.js"></script>  
-	</span><script src="/_utils/script/jquery.js?1.3.1"></script>  
-	</span><script src="/_utils/script/jquery.couch.js?0.9.0"></script>
+	<script src="/_utils/script/jquery.js?1.3.1"></script>  
+	<script src="/_utils/script/jquery.couch.js?0.9.0"></script>
 	<script type="text/javascript">
 	    var $ = jQuery.noConflict();
 	</script>
@@ -15,7 +15,8 @@
 	    var $ui = jQuery.noConflict();
 	</script>
 	<script src="js/jquery-ui-1.8.16.custom.min.js"></script>
-	</span><script src="js/metabolomics_functions.js"></script>
+	<script src="js/metabolomics_functions.js"></script>
+	<script src="js/jquery.dynacloud-5.js"></script>
 	
 	<span style="white-space: pre;"> </span>  
   </head>
@@ -27,14 +28,19 @@
     <div id="profile">
     	<p>Select metabolites below</p>
     </div>
-    
+	
     <div id="items">
     </div>
-
+	
     <div id="sidebar">
       <h2>Instructions</h2>
       <p>Click on various compounds</p>
       <p>The pathways associated with your compounds will appear</p>
+      <p>A word cloud based on the descriptions of the pathways will appear here. </p>
+	</div>
+	
+	<div id="dynatext" class="dynacloud">
+			Some text here...
 	</div>
   </body>
 </html>

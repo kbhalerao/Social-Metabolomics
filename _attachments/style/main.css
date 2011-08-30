@@ -54,6 +54,14 @@ ul {
   float:left;
 }
 
+#dynatext {
+	visibility: hidden;
+}
+
+.highlight {
+	background-color: yellow
+}
+
 #sidebar {
   border:4px solid #cdcdcd;
   padding:8px;

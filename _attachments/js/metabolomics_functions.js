@@ -52,7 +52,7 @@ function addUpdateForm(target, existingDoc) {
     target.children("form#update").data("existingDoc", existingDoc);  
 }  
 
-function updatePathways(doc, state) {
+function updatePathways(doc, state, cb) {
     pathstring = doc.Pathways;
     pathways = pathstring.match(kopattern);	 
     if(state == true) { //add to table
@@ -76,6 +76,8 @@ function updatePathways(doc, state) {
     }
     
     $("div#profile").empty();
+    $('div#dynatext').empty();
+    $('div#sidebar').empty();
     $("div#profile").append('<table id="tab"><tr><th>KO/MAP</th><th>Count</th><th>Name</th><th>Class</th></tr>');
     for(path in pathwayList) {
         path_key = path.match(path_num);
@@ -88,11 +90,13 @@ function updatePathways(doc, state) {
                 obj = data.rows;
                 path_name = obj[0]["key"];
                 row = obj[0].value;
+                $("div#dynatext").append(row.Description);
                 $("table#tab").append('<tr><td>' + 
                     '<a href=' + dbget_uri + row.Prefix+path_name + '>' + row.Prefix+path_name +  '</a></td>' +
                     '<td align="center">' + pathwayList[row.Prefix+path_name] + "</td><td>" +
                     row.Name + "</td><td>" + "  " + row.Class + 
                     '</td></tr>');
+                $ui("#dynatext").dynaCloud('#sidebar');
                 });
             }
         }
@@ -100,7 +104,6 @@ function updatePathways(doc, state) {
 
 $(document).ready(function() {
     makeButtons();
-    
     $("button#add_new").click(function(event) {     
 				$("form#update").remove();  
 				$("button#add").hide();  
@@ -113,7 +116,7 @@ $(document).ready(function() {
             id = $tgt.attr("id");
             state = $tgt.attr("checked");
             $db.openDoc(id, { success: function(doc) {  
-            updatePathways(doc, state);  
+            updatePathways(doc, state); 
             }});
         }
         if ($tgt.hasClass("edit")) { 
@@ -147,5 +150,5 @@ $(document).ready(function() {
                 }});  
             return false;  
            });  
-
+	$ui.merge($ui.dynaCloud.stopwords, ["AA", "MD", "ATP"]);
 });	    
