@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Metabolomics</title>
+    <link rel="stylesheet" href="../../style/main.css" type="text/css" />
+    <script src="/_utils/script/json2.js"></script>  
+	</span><script src="/_utils/script/jquery.js?1.3.1"></script>  
+	</span><script src="/_utils/script/jquery.couch.js?0.9.0"></script>
+	<script type="text/javascript">
+	    var $ = jQuery.noConflict();
+	</script>
+	<link type="text/css" href="../../css/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+	<script src="../../js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript">
+	    var $ui = jQuery.noConflict();
+	</script>
+	<script src="../../js/jquery-ui-1.8.16.custom.min.js"></script>
+	
+	<span style="white-space: pre;"> </span>  
+  </head>
+  <body>
+    <div id="account"></div>
+
+    <h1>Edit document</h1>
+
+    <div id="profile">
+    	<p>Edit the compound file below</p>
+    </div>
+    
+    <div id="items">
+    	{{#data}}
+    		{{Name}}<br />
+    	{{/data}}
+
+    </div>
+
+    <div id="sidebar">
+      <h2>Instructions</h2>
+      <p>Click on various fields</p>
+      <p>Edit / update them, or add new fields</p>
+      <p>Save when you're done</p>
+	</div>
+  </body>
+</html>

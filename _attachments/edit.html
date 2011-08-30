@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editing documents via evently and mustache!</title>
+    <link rel="stylesheet" href="style/main.css" type="text/css">
+  </head>
+  <body>
+    <h1>Document file</h1>
+    <div id="items"><p>Empty items!</p></div>
+    <div id="sidebar"><p>Empty sidebar!</p></div>
+  </body>
+  <script src="vendor/couchapp/loader.js"></script>
+  <script type="text/javascript" charset="utf-8">
+  $.couch.app(function(app) {
+    $("#items").evently("items", app);
+  }, {'urlPrefix':'/couchdb'});
+</script>
+</html>
