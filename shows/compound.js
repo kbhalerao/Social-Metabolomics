@@ -1,8 +1,6 @@
 function(doc, req) {  
 	var Mustache = require("vendor/couchapp/lib/mustache");	
 	
-	var context = {data : doc};
-	
-	return Mustache.to_html(this.templates.edit, context);
+	return Mustache.to_html(this.templates.edit, doc, this.templates.partials.compound);
 	// create a new document
 }

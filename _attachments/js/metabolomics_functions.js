@@ -4,7 +4,9 @@ var pathwayList = [];
 kopattern = /(map|ko)\d{5}/ig;
 path_num = /\d{5}/i;
 
-show_uri = 'http://abe-bhaleraolab.age.uiuc.edu/couchdb/metabolomics/_design/metabolomics/_show/compound/'
+compound_show_uri = '_show/compound/';
+pathway_show_uri = '_show/pathway/';
+
 function makeButtons() {
     
     $("div#items").empty();
@@ -46,7 +48,7 @@ function addUpdateForm(target, existingDoc) {
     '<tr><td><input type="submit" name="submit" class="update" value="' +
     (existingDoc?"Update":"Add") + '"/></td><td>' +   
     '<input type="submit" name="cancel" class="cancel" value="Cancel"/></td></tr>' +   
-    //'<tr><td><a href="' + show_uri + existingDoc._id + '">Full document</a>' + '</td><td></td></tr>' +
+    '<tr><td><a href="' + compound_show_uri + existingDoc._id + '">Add your own insight</a>' + '</td><td></td></tr>' +
     '</table></form>';  
     target.append(html);  
     target.children("form#update").data("existingDoc", existingDoc);  
@@ -83,7 +85,7 @@ function updatePathways(doc, state, cb) {
         path_key = path.match(path_num);
         times = pathwayList[path];
         if(times > 0) {
-            uri = 'http://abe-bhaleraolab.age.uiuc.edu/couchdb/metabolomics/_design/metabolomics/_view/pathways?key="';
+            uri = '../_view/pathways?key="';
             uri = uri + path_key + '"';
             $.getJSON(uri, function(data) {
                 
@@ -91,10 +93,10 @@ function updatePathways(doc, state, cb) {
                 path_name = obj[0]["key"];
                 row = obj[0].value;
                 if(row.Description != "") {
-                    $("div#dynatext").append('<a href=' + dbget_uri + row.Prefix+path_name + '>' + row.Prefix+path_name +  '</a>: ' + row.Description + '<br />');
+                    $("div#dynatext").append('<a href=' + pathway_show_uri + obj[0]["id"] + '>' + row.Prefix+path_name +  '</a>: ' + row.Description + '<br />');
                 }
                 $("table#tab").append('<tr><td>' + 
-                    '<a href=' + dbget_uri + row.Prefix+path_name + '>' + row.Prefix+path_name +  '</a></td>' +
+                    '<a href=' + pathway_show_uri + obj[0]["id"] + '>' + row.Prefix+path_name +  '</a></td>' +
                     '<td align="center">' + pathwayList[row.Prefix+path_name] + "</td><td>" +
                     row.Name + "</td><td>" + "  " + row.Class + 
                     '</td></tr>');
