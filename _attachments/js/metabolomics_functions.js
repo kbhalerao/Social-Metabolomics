@@ -90,7 +90,9 @@ function updatePathways(doc, state, cb) {
                 obj = data.rows;
                 path_name = obj[0]["key"];
                 row = obj[0].value;
-                $("div#dynatext").append(row.Description);
+                if(row.Description != "") {
+                    $("div#dynatext").append('<a href=' + dbget_uri + row.Prefix+path_name + '>' + row.Prefix+path_name +  '</a>: ' + row.Description + '<br />');
+                }
                 $("table#tab").append('<tr><td>' + 
                     '<a href=' + dbget_uri + row.Prefix+path_name + '>' + row.Prefix+path_name +  '</a></td>' +
                     '<td align="center">' + pathwayList[row.Prefix+path_name] + "</td><td>" +
@@ -150,5 +152,5 @@ $(document).ready(function() {
                 }});  
             return false;  
            });  
-	$ui.merge($ui.dynaCloud.stopwords, ["AA", "MD", "ATP"]);
+	$ui.merge($ui.dynaCloud.stopwords, ["AA", "MD", "ATP", "Descriptions", "AAs"]);
 });	    

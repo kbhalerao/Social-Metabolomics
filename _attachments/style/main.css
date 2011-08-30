@@ -50,12 +50,16 @@ ul {
 #items {
   border:4px solid #cdcdcd;
   padding:8px;
-  width:60%;
+  width:50%;
   float:left;
 }
 
 #dynatext {
-	visibility: hidden;
+  visibility: visible;
+  border:4px solid #cdcdcd;
+  padding:8px;
+  float:right;
+  width:43%;
 }
 
 .highlight {
@@ -66,7 +70,8 @@ ul {
   border:4px solid #cdcdcd;
   padding:8px;
   float:right;
-  width:30%;
+  width:43%;
+  margin-bottom:8px;
 }
 
 #items li {
@@ -112,4 +117,25 @@ table, th, td
 {
 border: 0px solid #cdcdcd;
 padding:3px 7px 2px 7px;
+}
+
+a {
+font-weight: normal;
+}
+
+a:link {
+color: #6699FF;
+text-decoration: none;
+}
+a:visited {
+color: #9999FF;
+text-decoration: none;
+}
+a:hover {
+color: #6699FF;
+text-decoration: underline;
+}
+a:active {
+color: #6699FF;
+text-decoration: none;
 }
