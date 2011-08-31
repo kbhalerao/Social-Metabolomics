@@ -85,7 +85,7 @@ function updatePathways(doc, state, cb) {
         path_key = path.match(path_num);
         times = pathwayList[path];
         if(times > 0) {
-            uri = '../_view/pathways?key="';
+            uri = '_view/pathways?key="';
             uri = uri + path_key + '"';
             $.getJSON(uri, function(data) {
                 
