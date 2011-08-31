@@ -1,4 +1,5 @@
-$db = $.couch.db("couchdb/metabolomics");
+$.couch.urlPrefix = 'couchdb';
+$db = $.couch.db("metabolomics");
 dbget_uri = 'http://www.genome.jp/dbget-bin/www_bget?'
 var pathwayList = [];
 kopattern = /(map|ko)\d{5}/ig;
