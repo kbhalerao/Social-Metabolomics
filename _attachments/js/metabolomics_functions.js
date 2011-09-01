@@ -1,4 +1,6 @@
-$.couch.urlPrefix = 'couchdb';
+if(window.location.origin == 'http://abe-bhaleraolab.age.uiuc.edu') {
+	$.couch.urlPrefix = 'http://abe-bhaleraolab.age.uiuc.edu/couchdb';
+	}
 $db = $.couch.db("metabolomics");
 dbget_uri = 'http://www.genome.jp/dbget-bin/www_bget?'
 var pathwayList = [];
@@ -32,8 +34,8 @@ function makeButtons() {
                 $("div#items").append(html);
             }
             $("div#items").append("</table>");
-			//$ui(":checkbox").button();
-			//console.log($ui(":checkbox"));
+			//$(":checkbox").button();
+			//console.log($(":checkbox"));
         }});
 }
 
@@ -94,14 +96,14 @@ function updatePathways(doc, state, cb) {
                 path_name = obj[0]["key"];
                 row = obj[0].value;
                 if(row.Description != "") {
-                    $("div#dynatext").append('<a href=' + pathway_show_uri + obj[0]["id"] + '>' + row.Prefix+path_name +  '</a>: ' + row.Description + '<br />');
+                    $("div#dynatext").append('<p><a href=' + pathway_show_uri + obj[0]["id"] + '>' + row.Prefix+path_name +  '</a>: ' + row.Description + '</p>');
                 }
                 $("table#tab").append('<tr><td>' + 
                     '<a href=' + pathway_show_uri + obj[0]["id"] + '>' + row.Prefix+path_name +  '</a></td>' +
                     '<td align="center">' + pathwayList[row.Prefix+path_name] + "</td><td>" +
                     row.Name + "</td><td>" + "  " + row.Class + 
                     '</td></tr>');
-                $ui("#dynatext").dynaCloud('#sidebar');
+                $("#dynatext").dynaCloud('#sidebar');
                 });
             }
         }
@@ -155,5 +157,15 @@ $(document).ready(function() {
                 }});  
             return false;  
            });  
-	$ui.merge($ui.dynaCloud.stopwords, ["AA", "MD", "ATP", "Descriptions", "AAs"]);
+    
+    // add stopwords to $.stopWords
+    app_stopwords = {
+		'aa' : true, 
+		'aas' : true,
+		'md' : true, 
+		'atp' : true, 
+		'pathway' : true,
+		'cycle' : true
+		};
+	$.extend($.wordStats.stopWords, app_stopwords);
 });	    
