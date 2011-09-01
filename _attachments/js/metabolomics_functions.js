@@ -1,4 +1,4 @@
-if(window.location.origin == 'http://abe-bhaleraolab.age.uiuc.edu') {
+if(window.location.hostname == 'abe-bhaleraolab.age.uiuc.edu') {
 	$.couch.urlPrefix = 'http://abe-bhaleraolab.age.uiuc.edu/couchdb';
 	}
 $db = $.couch.db("metabolomics");
