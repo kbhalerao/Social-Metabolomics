@@ -67,13 +67,14 @@
 			<span class="date">Sep 1 2011</span>	
 			</p>
 			<div id="profile">
-    			<p>Select metabolites below</p>
+    			<p>Select metabolites on the right</p>
     		</div>
     		<p></p>
     		<div id="sidebar"></div>
-    		<h3>Metabolites</h3>
-			<div id="items">
-			</div>
+    		
+    		<h3>Pathway descriptions</h3>		
+			
+			<div id="dynatext" class="dynacloud"></div>	
 			{{/user}}
 		</div>
 			
@@ -82,10 +83,11 @@
 		<div id="left-columns" class="grid_8">
 		
 			<div class="grid_4 alpha">
-		
-				<h3>Pathway descriptions</h3>		
-			
-				<div id="dynatext" class="dynacloud"></div>		
+				{{#user}}
+				<h3>Metabolites</h3>
+					<div id="items"></div>
+				{{/user}}
+					
 			
 			</div>	
 	
