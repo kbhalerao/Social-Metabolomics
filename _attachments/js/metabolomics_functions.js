@@ -26,7 +26,7 @@ function makeButtons() {
                 name + '</input></td> '+  
                 //'<td>' + name + '</td> ' +  
                 //'<td>' + keggID + '</td> ' +  
-                '<td><a href="#" class="edit" id="' + doc_id + '">edit</a></td> '+  
+                //'<td><a href="#" class="edit" id="' + doc_id + '">edit</a></td> '+  
                 '</tr></div>';  
                 $("div#items").append(html);
             }
