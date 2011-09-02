@@ -6,6 +6,10 @@
 <script src="../js/jquery.wordstats.en.js"></script>
 <script type="text/javascript">
 	    $(document).ready(function() {
+	    
+	    	if(window.location.hostname == 'abe-bhaleraolab.age.uiuc.edu') {
+				$.couch.urlPrefix = 'http://abe-bhaleraolab.age.uiuc.edu/couchdb';
+			}
 	           
 	        $("a#signup").live('click', (function(e) {
 	               
