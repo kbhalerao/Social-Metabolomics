@@ -17,6 +17,9 @@ body {
 	background: #F6F5F5 url(../images/bg.gif) repeat-x; 
 	text-align: center;
 }
+.highlight {
+        background-color: yellow;
+}
 /* Links */
 a:link, a:visited { 
 	text-decoration: none;

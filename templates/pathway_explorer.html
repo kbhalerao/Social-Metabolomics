@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Skim</title>
+
+<meta charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css" />
+{{>scripts}}
+
+</head>
+<body>
+
+	<!-- header starts-->
+	<div id="header-wrap"><div id="header" class="container_16">						
+		
+		<h1 id="logo-text"><a href="index.html" title="">Skim</a></h1>
+		<p id="intro">Simple knowledgebase for insightful metabolomics</p>
+		
+		<!-- navigation -->
+		<div  id="nav">
+			<ul>
+				<li><a href="index">Home</a></li>
+				<li id="current"><a href="pathway_explorer">Pathways</a></li>
+				<li><a href="blog.html">Notebook</a></li>
+				<li><a href="index.html">Collaborations</a></li>
+				<li><a href="index.html">Support</a></li>		
+			</ul>		
+		</div>		
+		
+		<div id="header-image"></div> 		
+		
+		<form id="quick-search" action="index.html" method="get" >
+			<p>
+			<label for="qsearch">Search:</label>
+			<input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
+			<input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="../images/search.gif" />
+			</p>
+		</form>					
+	
+	<!-- header ends here -->
+	</div></div>
+	
+	<!-- content starts -->
+	<div id="content-outer"><div id="content-wrapper" class="container_16">
+	
+		<!-- main -->
+		<div id="main" class="grid_8">
+			{{^user}}
+			<h3>Please <a href="http://localhost:5984/metabolomics/_design/metabolomics/_show/index">sign up</a>
+				or <a href="#" id="login">log in</a> to use this feature</h3>
+			{{/user}}
+			{{#user}}
+			<h2><a href="index.html">Pathway Explorer</a></h2>
+			
+			<p class="post-info">Posted by <a href="index.html">kbhalerao</a> | Filed under <a href="index.html">pathway explorer</a></p>
+			
+			<p>
+			Click on the list of metabolites in the list on the right. 
+			The pathways these metabolites appear in will appear below, along with 
+			a word cloud that lists some of the dominant words in the pathway
+			descriptions. 
+			</p>
+			<p class="postmeta">		
+			<a href="index.html" class="readmore">Read more</a> |
+			<span class="date">Sep 1 2011</span>	
+			</p>
+			<div id="profile">
+    			<p>Select metabolites below</p>
+    		</div>
+    		<p></p>
+    		<div id="sidebar"></div>
+    		<h3>Metabolites</h3>
+			<div id="items">
+			</div>
+			{{/user}}
+		</div>
+			
+					
+		<!-- left-columns starts -->
+		<div id="left-columns" class="grid_8">
+		
+			<div class="grid_4 alpha">
+		
+				<h3>Pathway descriptions</h3>		
+			
+				<div id="dynatext" class="dynacloud"></div>		
+			
+			</div>	
+	
+		
+			<div class="grid_4 omega">
+			    {{#user}}
+				<div class="sidemenu" id="account">	
+				    <h3>{{user}}</h3>
+					<ul>				
+						<li><a href="index.html">Notebooks</a></li>
+						<li><a href="style.html">Collaborations</a></li>
+						<li><a href="blog.html">Insights</a></li>
+						<li><a href="#" id="logout">Logout</a></li>
+					</ul>	
+				</div>
+				{{/user}}
+				
+				{{^user}}
+			    <div class="sidemenu" id="account">	
+				    <h3>Guest user</h3>
+				    <ul>
+				        <li><a href="#" id="login">Log in</a></li>
+				    </ul>
+				</div>
+				{{/user}}	
+			
+				<div class="sidemenu">
+					<h3>Top contributors</h3>
+					<ul>
+						<li><a href="#">PowerUser <br />
+                            <span>300 insights, 4 tools</span></a>
+                        </li>
+						<li><a href="#">PowerTool <br />
+                            <span>24 insights, 16 tools</span></a>
+                        </li>
+						
+					</ul>
+				</div>
+			
+				<h3>Latest tool</h3>
+				<p>
+				Cluster chart:<br />
+				An algorithm to cluster insights into common themes
+				</p>
+			
+				<p class="align-right">PowerTool</p>
+			
+				<h3>Latest insight</h3>
+				<p>
+				Vestibulum venenatis. Nulla vel ipsum. Proin rutrum, urna sit amet bibendum 
+                pellentesque, ante sapien varius turpis, eu nonummy nunc urna scelerisque ante. 
+                Nunc sed leo at dolor pharetra facilisis. Sed sed lectus at justo dapibus tristique. 
+                Morbi molestie pulvinar elit. Donec dictum nibh nec est. Aliquam sagittis, lacus 
+                a pharetra tempor, enim justo tempor nisi, at aliquet nulla metus sed augue. 
+                </p>
+			</div>
+		
+		
+		<!-- end left-columns -->
+		</div>		
+	
+	<!-- contents end here -->	
+	</div></div>
+
+	<!-- footer starts here -->	
+	<div id="footer-wrapper" class="container_16">
+	
+		<div id="footer-content">
+		
+			<div class="grid_8">
+		
+				<h3>Resource Links</h3>			
+				<p>
+				<a href="index.html">Read more...</a>
+				</p>
+
+				<ul class="footer-list">				
+                    <li><a href="http://abe-bhaleraolab.age.uiuc.edu" title="Bhalerao Lab">BhaleraoLab -
+                        <span>Homepage at Agricultural and Biological Engineering</span></a>
+                    </li>
+				</ul>			
+						
+			</div>
+			
+			<div class="grid_8">
+					
+				<h3>Image Gallery </h3>					
+				<p class="thumbs">
+					<a href="index.html"><img src="../images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+					<a href="index.html"><img src="../images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+					<a href="index.html"><img src="../images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+				</p>	
+			<!--
+				<h3>About</h3>			
+				<p>
+				<a href="http://getfirefox.com/"><img src="../images/gravatar.jpg" width="40" height="40" alt="firefox" class="float-left" /></a>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
+				Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
+				posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum 
+				odio, ac blandit ante orci ut diam.</p>
+				<p>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
+				Cras id urna. <a href="index.html">Learn more...</a></p>
+			-->		
+			</div>	
+		
+		</div>
+	
+		<div id="footer-bottom">
+	
+			<p class="bottom-left">			
+			&nbsp; &copy; 2011 Kaustubh D. Bhalerao <br />
+			Agricultural and Biological Engineering </br>
+			University of Illinois at Urbana-Champaign.
+			Design by <a href="http://www.styleshout.com/">styleshout</a>
+			</p>	
+			
+			<p class="bottom-right" >
+				<a href="index.html">Home</a> |
+				<a href="index.html">Sitemap</a> |
+				<a href="index.html">RSS Feed</a> |						
+				<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | 
+		   	    <a href="http://validator.w3.org/check/referer">XHTML</a>
+			</p>
+	
+		</div>	
+			
+	</div>
+	<!-- footer ends here -->
+
+</body>
+</html>

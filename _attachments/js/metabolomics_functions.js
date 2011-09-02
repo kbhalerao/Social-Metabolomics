@@ -7,16 +7,13 @@ var pathwayList = [];
 kopattern = /(map|ko)\d{5}/ig;
 path_num = /\d{5}/i;
 
-compound_show_uri = '_show/compound/';
-pathway_show_uri = '_show/pathway/';
+compound_show_uri = 'compound/';
+pathway_show_uri = 'pathway/';
 
 function makeButtons() {
     
     $("div#items").empty();
-    
-    //$("div#items").append('<div id="add_new"><button type="button" id="add_new">Add a new metabolite</button><p></p></div>');  
-    // Create a new interface to add / remove metabolites.
-    
+        
     $db.view("metabolomics/known_keggIDs", {
         success: function(data) {
             $("div#items").append('<table>');
@@ -25,7 +22,7 @@ function makeButtons() {
                 name = data.rows[i].key;  
                 keggID = data.rows[i].value.KeggID;  
                 html = '<div><tr>' +  
-                '<td><input class="check" type="checkbox" id="' + doc_id + '">' + 
+                '<td><input class="check" type="checkbox" id="' + doc_id + '">&nbsp;&nbsp;' + 
                 name + '</input></td> '+  
                 //'<td>' + name + '</td> ' +  
                 //'<td>' + keggID + '</td> ' +  
@@ -34,8 +31,6 @@ function makeButtons() {
                 $("div#items").append(html);
             }
             $("div#items").append("</table>");
-			//$(":checkbox").button();
-			//console.log($(":checkbox"));
         }});
 }
 
@@ -88,7 +83,7 @@ function updatePathways(doc, state, cb) {
         path_key = path.match(path_num);
         times = pathwayList[path];
         if(times > 0) {
-            uri = '_view/pathways?key="';
+            uri = '../_view/pathways?key="';
             uri = uri + path_key + '"';
             $.getJSON(uri, function(data) {
                 
@@ -168,4 +163,46 @@ $(document).ready(function() {
 		'cycle' : true
 		};
 	$.extend($.wordStats.stopWords, app_stopwords);
+		
+	$('input[value="Login"]').live('click', function(e) {
+		$.couch.login({
+			name : $('input#username').val(),
+			password : $('input#password').val(),
+			success: function(data) {
+				location.reload();
+				},
+			error: function(data) {
+				alert("unable to log in");
+				}
+		});
+
+	});
+		
+	$('a#logout').live('click', function(e) {
+		 
+		 $.couch.logout({
+			success: function(data) {
+				location.reload();
+				},
+			error: function(data) {
+				console.log(data);
+				}
+			});
+	
+	});
+	
+	$("a#login").click(function(e) {
+		$('form#loginform').remove();
+		
+		html = '<form id="loginform">' + 	
+		'<p><label for="name">Username</label><br />' +
+		'<input id="username" name="username" value="" type="text" tabindex="1" /></p>'+
+		'<p><label for="password">Password</label><br />' +
+		'<input id="password" name="password" value="" type="password" tabindex="2" />' +
+		'<p class="no-border">' +
+		'<input class="button" value="Login" tabindex="3" />' +
+		'</form>';	
+		
+		$(e.target).parent().append(html);
+	});
 });	    

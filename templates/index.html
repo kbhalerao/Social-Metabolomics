@@ -21,8 +21,8 @@
 		<!-- navigation -->
 		<div  id="nav">
 			<ul>
-				<li id="current"><a href="index.html">Home</a></li>
-				<li><a href="style.html">Pathways</a></li>
+				<li id="current"><a href="index">Home</a></li>
+				<li><a href="pathway_explorer">Pathways</a></li>
 				<li><a href="blog.html">Notebook</a></li>
 				<li><a href="index.html">Collaborations</a></li>
 				<li><a href="index.html">Support</a></li>		
@@ -47,10 +47,6 @@
 	
 		<!-- main -->
 		<div id="main" class="grid_8">
-			{{#user}}
-			    TODO- think of a welcome page for people logged in. 
-			{{/user}}
-			{{^user}}
 			<h2><a href="index.html">What is Skim?</a></h2>
 			
 			<p class="post-info">Posted by <a href="index.html">kbhalerao</a> | Filed under <a href="index.html">introduction</a>, <a href="index.html">welcome</a></p>
@@ -64,9 +60,11 @@
             and by developing novel tools to query, aggregate and analyze this 
             collective pool of knowledge, we can address the sore lack of tools
             for producing biologically relevant knowledge based on quantitative information.</p>
+			{{^user}}
 			<p>
 			<a href="#" id='signup'>Signup here</a>
 			</p>
+			{{/user}}
 			<p class="postmeta">		
 			<a href="index.html" class="readmore">Read more</a> |
 			<span class="date">Sep 1 2011</span>	
@@ -136,75 +134,13 @@
 			</div>
 		
 		<!-- main ends -->
-		{{/user}}
 		</div>
 		
 		<!-- left-columns starts -->
 		<div id="left-columns" class="grid_8">
 		
+	
 			<div class="grid_4 alpha">
-			    {{#user}}
-				<div class="sidemenu" id="account">	
-				    <h3>{{user}}</h3>
-					<ul>				
-						<li><a href="index.html">Notebooks</a></li>
-						<li><a href="style.html">Collaborations</a></li>
-						<li><a href="blog.html">Insights</a></li>
-						<li><a href="#" id="logout">Logout</a></li>
-					</ul>	
-				</div>
-				{{/user}}
-				
-				{{^user}}
-			    <div class="sidemenu" id="account">	
-				    <h3>Guest user</h3>
-				    <ul>
-				        <li><a href="#" id="login">Log in</a></li>
-				    </ul>
-				</div>
-				{{/user}}	
-				
-				
-				<div class="sidemenu">
-					<h3>Top tools</h3>
-					<ul>
-						<li><a href="#">Pathway explorer</a></li>
-						<li><a href="#">WordStats</a></li>					
-						<li><a href="#">onTopic</a></li>
-					</ul>
-				</div>
-			
-				<div class="sidemenu">
-					<h3>Top contributors</h3>
-					<ul>
-						<li><a href="#">PowerUser <br />
-                            <span>300 insights, 4 tools</span></a>
-                        </li>
-						<li><a href="#">PowerTool <br />
-                            <span>24 insights, 16 tools</span></a>
-                        </li>
-						
-					</ul>
-				</div>
-			
-				<h3>Latest tool</h3>
-				<p>
-				Cluster chart:<br />
-				An algorithm to cluster insights into common themes
-				</p>
-			
-				<p class="align-right">PowerTool</p>
-			
-				<h3>Latest insight</h3>
-				<p>
-				Vestibulum venenatis. Nulla vel ipsum. Proin rutrum, urna sit amet bibendum 
-                pellentesque, ante sapien varius turpis, eu nonummy nunc urna scelerisque ante. 
-                Nunc sed leo at dolor pharetra facilisis. Sed sed lectus at justo dapibus tristique. 
-                Morbi molestie pulvinar elit. Donec dictum nibh nec est. Aliquam sagittis, lacus 
-                a pharetra tempor, enim justo tempor nisi, at aliquet nulla metus sed augue. 
-			</div>
-		
-			<div class="grid_4 omega">
 		
 				<h3>Featured Insights</h3>		
 			
@@ -258,6 +194,61 @@
 				</div>				
 			
 			</div>	
+			
+			<div class="grid_4 omega">
+			    {{#user}}
+				<div class="sidemenu" id="account">	
+				    <h3>{{user}}</h3>
+					<ul>				
+						<li><a href="index.html">Notebooks</a></li>
+						<li><a href="style.html">Collaborations</a></li>
+						<li><a href="blog.html">Insights</a></li>
+						<li><a href="#" id="logout">Logout</a></li>
+					</ul>	
+				</div>
+				{{/user}}
+				
+				{{^user}}
+			    <div class="sidemenu" id="account">	
+				    <h3>Guest user</h3>
+				    <ul>
+				        <li><a href="#" id="login">Log in</a></li>
+				    </ul>
+				</div>
+				{{/user}}	
+				
+			
+				<div class="sidemenu">
+					<h3>Top contributors</h3>
+					<ul>
+						<li><a href="#">PowerUser <br />
+                            <span>300 insights, 4 tools</span></a>
+                        </li>
+						<li><a href="#">PowerTool <br />
+                            <span>24 insights, 16 tools</span></a>
+                        </li>
+						
+					</ul>
+				</div>
+			
+				<h3>Latest tool</h3>
+				<p>
+				Cluster chart:<br />
+				An algorithm to cluster insights into common themes
+				</p>
+			
+				<p class="align-right">PowerTool</p>
+			
+				<h3>Latest insight</h3>
+				<p>
+				Vestibulum venenatis. Nulla vel ipsum. Proin rutrum, urna sit amet bibendum 
+                pellentesque, ante sapien varius turpis, eu nonummy nunc urna scelerisque ante. 
+                Nunc sed leo at dolor pharetra facilisis. Sed sed lectus at justo dapibus tristique. 
+                Morbi molestie pulvinar elit. Donec dictum nibh nec est. Aliquam sagittis, lacus 
+                a pharetra tempor, enim justo tempor nisi, at aliquet nulla metus sed augue. 
+                </p>
+			</div>
+		
 		
 		<!-- end left-columns -->
 		</div>		
