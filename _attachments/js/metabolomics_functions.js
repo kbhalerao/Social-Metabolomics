@@ -12,11 +12,11 @@ pathway_show_uri = 'pathway/';
 
 function makeButtons() {
     
-    $("div#items").empty();
+    $("div#metabolites").empty();
         
     $db.view("metabolomics/known_keggIDs", {
         success: function(data) {
-            $("div#items").append('<table>');
+            $("div#metabolites").append('<table>');
             for (i in data.rows) {  
                 doc_id = data.rows[i].id;  
                 name = data.rows[i].key;  
@@ -28,9 +28,9 @@ function makeButtons() {
                 //'<td>' + keggID + '</td> ' +  
                 //'<td><a href="#" class="edit" id="' + doc_id + '">edit</a></td> '+  
                 '</tr></div>';  
-                $("div#items").append(html);
+                $("div#metabolites").append(html);
             }
-            $("div#items").append("</table>");
+            $("div#metabolites").append("</table>");
         }});
 }
 
@@ -75,15 +75,15 @@ function updatePathways(doc, state, cb) {
         }
     }
     
-    $("div#profile").empty();
+    $("div#pathways").empty();
     $('div#dynatext').empty();
-    $('div#sidebar').empty();
-    $("div#profile").append('<table id="tab"><tr><th>KO/MAP</th><th>Count</th><th>Name</th><th>Class</th></tr>');
+    $('div#wordcloud').empty();
+    $("div#pathways").append('<table id="tab"><tr><th>KO/MAP</th><th>Count</th><th>Name</th><th>Class</th></tr>');
     for(path in pathwayList) {
         path_key = path.match(path_num);
         times = pathwayList[path];
         if(times > 0) {
-            uri = '../_view/pathways?key="';
+            uri = '_view/pathways?key="';
             uri = uri + path_key + '"';
             $.getJSON(uri, function(data) {
                 
@@ -98,7 +98,7 @@ function updatePathways(doc, state, cb) {
                     '<td align="center">' + pathwayList[row.Prefix+path_name] + "</td><td>" +
                     row.Name + "</td><td>" + "  " + row.Class + 
                     '</td></tr>');
-                $("#dynatext").dynaCloud('#sidebar');
+                $("#dynatext").dynaCloud('#wordcloud');
                 });
             }
         }
@@ -112,7 +112,7 @@ $(document).ready(function() {
 				addUpdateForm($("div#add_new"));  
 			});
     
-    $("div#items").click(function(event) {
+    $("div#metabolites").click(function(event) {
         $tgt = $(event.target);
         if($tgt.attr("type") == "checkbox") {
             id = $tgt.attr("id");
@@ -205,4 +205,5 @@ $(document).ready(function() {
 		
 		$(e.target).parent().append(html);
 	});
+	
 });	    
