@@ -1,0 +1,5 @@
+{
+  "view" : "recent-messages",
+  "descending" : "true",
+  "limit" : 10
+}

@@ -1,1 +1,300 @@
-../templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Skim</title>
+
+<meta charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
+
+</head>
+<body>
+
+	<!-- header starts-->
+	<div id="header-wrap"><div id="header" class="container_16">						
+		
+		<h1 id="logo-text"><a href="index.html" title="">Skim</a></h1>
+		<p id="intro">Simple knowledgebase for insightful metabolomics</p>
+		
+		<!-- navigation -->
+		<div  id="nav">
+			<ul>
+				<li id="current"><a href="index">Home</a></li>
+				<li><a href="pathway_explorer">Pathways</a></li>
+				<li><a href="blog.html">Notebook</a></li>
+				<li><a href="index.html">Collaborations</a></li>
+				<li><a href="index.html">Support</a></li>		
+			</ul>		
+		</div>		
+		
+		<div id="header-image"></div>		
+		
+		<form id="quick-search" action="index.html" method="get" >
+			<p>
+			<label for="qsearch">Search:</label>
+			<input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
+			<input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="images/search.gif" />
+			</p>
+		</form>					
+	
+	<!-- header ends here -->
+	</div></div>
+	
+	<!-- content starts -->
+	<div id="content-outer"><div id="content-wrapper" class="container_16">
+	
+		<!-- main -->
+		<div id="main" class="grid_8">
+			<h2><a href="index.html">What is Skim?</a></h2>
+			
+			<p class="post-info">Posted by <a href="index.html">kbhalerao</a> | Filed under <a href="index.html">introduction</a>, <a href="index.html">welcome</a></p>
+			<a href="http://getfirefox.com/"><img src="images/firefox-gray.jpg" width="100" height="120" alt="firefox" class="float-left" /></a> 
+			<p><strong>Skim</strong> stands for 'Simple knowledgebase for insightful metabolomics'.
+			<strong>Skim</strong> is a is a free, open-source framework for simplifying interpretation of high 
+			throughput metabolomics data. There is a considerable gap between 
+			our ability to produce metabolomics data and our ability to analyze 
+			it to gain systems-level insight into the biological processes that
+			produced the data. By pooling our collective insights into metabolomics
+			and by developing novel tools to query, aggregate and analyze this 
+			collective pool of knowledge, we can address the sore lack of tools
+			for producing biologically relevant knowledge based on quantitative information.</p>
+			
+			<p class="postmeta">		
+			<a href="index.html" class="readmore">Read more</a> |
+			<span class="date">Sep 1 2011</span>	
+			</p>
+			
+			<h2><a href="index.html">Technologies underlying Skim</a></h2>
+			
+			<p>
+			Skim relies on two sources of metabolite, reaction and pathway information: Highly curated databases
+			such as the <a href="http://www.genome.jp/kegg/pathway.html">KEGG PATHWAY Database</a>
+			and valuable insights and inputs provided by users such as yourself. 
+			</p>			
+			<p>In addition to serving as a repository for your thoughts, opinions and conjectures, 
+			we are also developing tools by which you could query yours (and others') 
+			inputs. We envision these tools will go well beyond simple word-based searches. They
+			will incorporate advanced natural language parsers to determine the structure of 
+			user inputs and provide a rapid overview of the knowledge base. The Skim framework
+			will eventually provide an API that would allow you to develop your own methods for 
+			querying and analyzing the information in Skim.	  
+			</p>
+			<div class="clear">&nbsp;</div>
+			
+			<div class="grid_4 alpha">
+			
+				<h3>Document-based information</h3>
+				<p>
+				Skim does not use a traditional (relational) database. It is built on top of 
+				<a href="http://couchdb.apache.org">CouchDB</a>, a document-based database. 
+				This database provides unparalleled scalability and flexibility in the development
+				of Skim. The kinds of tools and data sources relevant to metabolomics are continuously
+				evolving. We do not know how your data analysis and storage needs evolve. 
+				CouchDB was built with exactly such a scenario in mind. 
+				</p>
+				<p>
+				Every piece of information entered or queried as part of the Skim framework, 
+				(including this HTML page) is stored as a document. It is accessible over
+				pure HTTP in a RESTful manner. These documents can be schema-free, and range
+				from fully structured (quantitative data tables) to fully unstructured (quick 
+				notes in your notebook). 
+				</p>
+				<p>
+				Because of the REST interface and the document-based model, replication of the 
+				database (and all its applications) is trivial. You can install your own 
+				CouchDB server and replicate this entire website locally if you wish. 
+				</p>
+			
+				<p><a class="more-link" href="index.html">continue reading</a></p>
+			
+			</div>
+			
+			<div class="grid_4 omega">
+			
+				<h3>Javascript-based tools</h3>
+				<p>
+				Applications built on CouchDB are built using pure Javascript and nothing else. 
+				We hope this considerably reduces the barrier potential developers to 
+				develop and share new analytical tools with the metabolomics community. 
+				</p>
+				<p>
+				That said, the knowledge of Javascript is not essential to using the Skim 
+				knowledgbase. There are plenty of tools we and others will develop over time
+				for you to focus on the task that you enjoy most: making sense of metabolomics.
+				</p>
+			
+				<p><a class="more-link" href="index.html">continue reading</a></p>			
+			
+			</div>
+		
+		<!-- main ends -->
+		</div>
+		
+		<!-- left-columns starts -->
+		<div id="left-columns" class="grid_8">
+		
+	
+			<div class="grid_4 alpha">
+		
+				<h3>Featured Insights</h3>		
+			
+				<div class="featured-post">
+				
+					<h4><a href="index.html">Lorem ipsum dolor sit</a></h4>
+					<p class="post-info">Posted by <a href="index.html">erwin</a> on 09/26/08 </p>
+					<p>
+					<a href="http://getfirefox.com/"><img src="images/image.gif" width="160" height="100" alt="firefox" class="float-left" /></a>
+					Vestibulum venenatis. Nulla vel ipsum. Proin rutrum, urna sit amet bibendum 
+					pellentesque, ante sapien varius turpis, eu nonummy nunc urna scelerisque ante. 
+					Nunc sed leo at dolor pharetra facilisis. Sed sed lectus at justo dapibus tristique. 
+					Morbi molestie pulvinar elit. Donec dictum nibh nec est. Aliquam sagittis, lacus 
+					a pharetra tempor, enim justo tempor nisi, at aliquet nulla metus sed augue.								
+					</p>	
+				
+					<p><a class="more-link" href="index.html">continue reading</a></p>
+				
+				</div>
+		
+				<div class="featured-post">
+			
+					<h4><a href="index.html">Lorem ipsum dolor sit</a></h4>
+					<p class="post-info">Posted by <a href="index.html">erwin</a> on 09/26/08 </p>
+					<p>
+					Vestibulum venenatis. Nulla vel ipsum. Proin rutrum, urna sit amet bibendum 
+					pellentesque, ante sapien varius turpis, eu nonummy nunc urna scelerisque ante. 
+					Nunc sed leo at dolor pharetra facilisis. Sed sed lectus at justo dapibus tristique. 
+					Morbi molestie pulvinar elit. Donec dictum nibh nec est. Aliquam sagittis, lacus 
+					a pharetra tempor, enim justo tempor nisi, at aliquet nulla metus sed augue.								
+					</p>	
+				
+					<p><a class="more-link" href="index.html">continue reading</a></p>
+				
+				</div>		
+			
+				<div class="featured-post">
+			
+					<h4><a href="index.html">Lorem ipsum dolor sit</a></h4>
+					<p class="post-info">Posted by <a href="index.html">erwin</a> on 09/26/08 </p>
+					<p>
+					Vestibulum venenatis. Nulla vel ipsum. Proin rutrum, urna sit amet bibendum 
+					pellentesque, ante sapien varius turpis, eu nonummy nunc urna scelerisque ante. 
+					Nunc sed leo at dolor pharetra facilisis. Sed sed lectus at justo dapibus tristique. 
+					Morbi molestie pulvinar elit. Donec dictum nibh nec est. Aliquam sagittis, lacus 
+					a pharetra tempor, enim justo tempor nisi, at aliquet nulla metus sed augue.								
+					</p>	
+				
+					<p><a class="more-link" href="index.html">continue reading</a></p>
+				
+				</div>				
+			
+			</div>	
+			
+			<div class="grid_4 omega">
+				
+				<div class="sidemenu" id="account"></div>
+				<div class="sidemenu" id="profile"></div>
+				<div class="sidemenu" id="items"></div>
+			
+				<h3>Latest tool</h3>
+				<p>
+				Cluster chart:<br />
+				An algorithm to cluster insights into common themes
+				</p>
+			
+				<p class="align-right">PowerTool</p>
+			
+				<h3>Latest insight</h3>
+				<p>
+				Vestibulum venenatis. Nulla vel ipsum. Proin rutrum, urna sit amet bibendum 
+				pellentesque, ante sapien varius turpis, eu nonummy nunc urna scelerisque ante. 
+				Nunc sed leo at dolor pharetra facilisis. Sed sed lectus at justo dapibus tristique. 
+				Morbi molestie pulvinar elit. Donec dictum nibh nec est. Aliquam sagittis, lacus 
+				a pharetra tempor, enim justo tempor nisi, at aliquet nulla metus sed augue. 
+				</p>
+			</div>
+		
+		
+		<!-- end left-columns -->
+		</div>		
+	
+	<!-- contents end here -->	
+	</div></div>
+
+	<!-- footer starts here --> 
+	<div id="footer-wrapper" class="container_16">
+	
+		<div id="footer-content">
+		
+			<div class="grid_8">
+		
+				<h3>Resource Links</h3>			
+				<p>
+				<a href="index.html">Read more...</a>
+				</p>
+
+				<ul class="footer-list">				
+					<li><a href="http://abe-bhaleraolab.age.uiuc.edu" title="Bhalerao Lab">BhaleraoLab -
+						<span>Homepage at Agricultural and Biological Engineering</span></a>
+					</li>
+				</ul>			
+						
+			</div>
+			
+			<div class="grid_8">
+					
+				<h3>Image Gallery </h3>					
+				<p class="thumbs">
+					<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+					<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+					<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+				</p>	
+			<!--
+				<h3>About</h3>			
+				<p>
+				<a href="http://getfirefox.com/"><img src="../images/gravatar.jpg" width="40" height="40" alt="firefox" class="float-left" /></a>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
+				Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
+				posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum 
+				odio, ac blandit ante orci ut diam.</p>
+				<p>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
+				Cras id urna. <a href="index.html">Learn more...</a></p>
+			-->		
+			</div>	
+		
+		</div>
+	
+		<div id="footer-bottom">
+	
+			<p class="bottom-left">			
+			&nbsp; &copy; 2011 Kaustubh D. Bhalerao <br />
+			Agricultural and Biological Engineering </br>
+			University of Illinois at Urbana-Champaign.
+			Design by <a href="http://www.styleshout.com/">styleshout</a>
+			</p>	
+			
+			<p class="bottom-right" >
+				<a href="index.html">Home</a> |
+				<a href="index.html">Sitemap</a> |
+				<a href="index.html">RSS Feed</a> |						
+				<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | 
+				<a href="http://validator.w3.org/check/referer">XHTML</a>
+			</p>
+	
+		</div>	
+			
+	</div>
+	<!-- footer ends here -->
+
+</body>
+	<script src="vendor/couchapp/loader.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$.couch.app(function(app) {
+		$("#account").evently("account", app);
+		$("#profile").evently("profile", app);
+		$.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
+		$("#items").evently("items", app);
+		});
+	</script>
+</html>
