@@ -267,11 +267,15 @@
 </body>
 	<script src="vendor/couchapp/loader.js"></script>
 	<script type="text/javascript" charset="utf-8">
+		var opts = {};
+		if(window.location.host == 'abe-bhaleraolab.age.uiuc.edu') {
+			opts = {urlPrefix : '/couchdb'};
+		}
 		$.couch.app(function(app) {
 		$("#account").evently("account", app);
 		$("#profile").evently("profile", app);
 		$.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
 		$("#items").evently("items", app);
-		});
+		}, opts);
 	</script>
 </html>
