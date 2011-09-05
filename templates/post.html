@@ -6,7 +6,9 @@
 
 <meta charset=UTF-8" />
 
-<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/screen.css" />
+<link rel="alternate" type="application/atom+xml" 
+      title="Atom Feed" href="{{ feedPath }}"/>
 
 </head>
 <body>
@@ -21,10 +23,10 @@
 		<div  id="nav">
 			<ul>
 				<li><a href="index.html">Home</a></li>
-				<li id="current"><a href="pathway_explorer.html">Pathways</a></li>
-				<li><a href="_list/notebook/recent-posts?descending=true&limit=5">Notebook</a></li>
+				<li><a href="pathway_explorer.html">Pathways</a></li>
+				<li id="current"><a href="../notebook/recent-posts?descending=true&limit=5">Notebook</a></li>
 				<li><a href="collaborations.html">Collaborations</a></li>
-				<li><a href="support.html">Support</a></li>			
+				<li><a href="support.html">Support</a></li>		
 			</ul>		
 		</div>		
 		
@@ -33,13 +35,12 @@
 				<div class="sidemenu" id="account"></div>
 				<div class="sidemenu" id="profile"></div>
 			</div>
-		</div> 		
-		
+		</div> 			
 		<form id="quick-search" action="index.html" method="get" >
 			<p>
 			<label for="qsearch">Search:</label>
 			<input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
-			<input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="images/search.gif" />
+			<input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="../../images/search.gif" />
 			</p>
 		</form>					
 	
@@ -48,47 +49,47 @@
 	
 	<!-- content starts -->
 	<div id="content-outer"><div id="content-wrapper" class="container_16">
-	
 		<!-- main -->
 		<div id="main" class="grid_8">
 			
-			<h2><a href="index.html">Pathway Explorer</a></h2>
-			
-			<p class="post-info">Developed by <a href="index.html">kbhalerao</a></p>
-			
-			<p>
-			Click on the list of metabolites in the list on the right. 
-			The pathways these metabolites appear in will appear below, along with 
-			a word cloud that lists some of the dominant words in the pathway
-			descriptions. 
-			<h4>Select metabolites &rarr;</h4>
-			</p>
-			<div id="pathways"></div>
-    		<p></p>
-    		<div id="wordcloud" class="grid_8"></div>
-    		<h3>Pathway descriptions</h3>		
-			
-			<div id="dynatext" class="dynacloud"></div>	
-		</div>
+			<h2><a href="index.html">From the notebook of {{author}}</a></h2>
+			<h3>{{title}}</h3>
+			<div id="add_new_insight"></div>
+			<div id="post">
+				<span class="date">{{ date }}</span>
+        		<div class="body">{{{ html }}}</div>
+      		</div>
+      		<div id="tags"></div>
+      		<div id="comments">
+				<ul>
+					{{#comments}}
+						{{>comment}}
+					{{/comments}}
+				</ul>
+			</div>
+			<div id="cprofile"></div>
+		</div>	
 			
 					
 		<!-- left-columns starts -->
 		<div id="left-columns" class="grid_8">
-		
-			<div class="grid_4 alpha">
-				<h3>Metabolites</h3>
-					<div id="metabolites"></div>		
-			</div>	
-	
-		
-			<div class="grid_4 omega">
-			    
-				<div class="sidemenu" id="items"></div>
 				
-			</div>
+		<div class="grid_4 alpha">
+			<h3>News Feed</h3>
+				<div id="news_feed"></div>		
+		</div>	
 		
-		
-		<!-- end left-columns -->
+			
+		<div class="grid_4 omega">
+			
+			<div class="sidemenu" id="account"></div>
+			<div class="sidemenu" id="profile"></div>
+			<div class="sidemenu" id="items"></div>
+			
+		</div>
+			
+			
+			<!-- end left-columns -->
 		</div>		
 	
 	<!-- contents end here -->	
@@ -118,9 +119,9 @@
 					
 				<h3>Image Gallery </h3>					
 				<p class="thumbs">
-					<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
-					<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
-					<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+					<a href="index.html"><img src="../../images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+					<a href="index.html"><img src="../../images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+					<a href="index.html"><img src="../../images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
 				</p>	
 			<!--
 				<h3>About</h3>			
@@ -161,7 +162,7 @@
 	<!-- footer ends here -->
 
 </body>
-	<script src="vendor/couchapp/loader.js"></script>
+	{{>scripts}}
 	<script type="text/javascript" charset="utf-8">
 		var opts = {};
 		if(window.location.host == 'abe-bhaleraolab.age.uiuc.edu') {
@@ -179,14 +180,26 @@
 			  })();
 		}
 		$.couch.app(function(app) {
-		$("#account").evently("account", app);
-		$("#profile").evently("profile", app);
-		$.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
-		$("#items").evently("items", app);
+			$('.date').prettyDate();
+			app.post_id = "{{post_id}}";
+			$("#account").evently("account", app);
+			$("#add_new_insight").evently("insights", app);
+			$("#profile").evently("profile", app);
+			//$("#cprofile").evently("cprofile", app);
+			$("#cprofile").evently($.extend(true, {}, 
+				app.ddoc.vendor.couchapp.evently.profile, 
+				app.ddoc.evently.cprofile), app);
+			$.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
+			$.evently.connect("#profile","#cprofile", ["profileReady","loggedOut"]);
+			$.evently.connect("#account","#add_new_insight", ["loggedIn"]);
+			$("#items").evently("items", app);
+			//$("#add_new_insight").evently($.extend(true, 
+			//	app.ddoc.vendor.couchapp.evently.account, 
+			//	app.ddoc.evently.insights), app);
+			//$("#tagcloud").evently(this.ddoc.evently.tagcloud, this);
+  			//	}, {
+			//	db : "{{db}}",
+			//	design : "{{design}}"	  
 		}, opts);
 	</script>
-	<script src="js/jquery.dynacloud-5.js"></script>
-	<script src="js/jquery.wordstats.js"></script>
-	<script src="js/jquery.wordstats.en.js"></script>
-	<script src="js/pathway_explorer.js"></script>
 </html>

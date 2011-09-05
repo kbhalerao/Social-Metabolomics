@@ -1,46 +1,269 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Metabolomics</title>
-    <link rel="stylesheet" href="../../style/main.css" type="text/css" />
-    <script src="/_utils/script/json2.js"></script>  
-	<script src="/_utils/script/jquery.js?1.3.1"></script>  
-	<script src="/_utils/script/jquery.couch.js?0.9.0"></script>
-	<script type="text/javascript">
-	    var $ = jQuery.noConflict();
-	</script>
-	<link type="text/css" href="../../css/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
-	<script src="../../js/jquery-1.6.2.min.js"></script>
-	<script type="text/javascript">
-	    var $ui = jQuery.noConflict();
-	</script>
-	<script src="../../js/jquery-ui-1.8.16.custom.min.js"></script>
-	<script src="js/metabolomics_functions.js"></script>
-  </head>
-  <body>
-    <div id="account"></div>
+<html lang="en">
 
-    <h1>Edit document</h1>
+<head>
+<title>Skim</title>
 
-    <div id="profile">
-    	<p>Edit the compound file below (Coming soon)</p>
-    </div>
-    
-    <div id="items">
-    	{{>doc_body}}
-    	<form class="editform">
-    	<p>Your inputs will serve as the foundation for a richer database for future analysis.</p>
-    	
-    	Author: <input type="text" name="username" /><br />
-    	Insight: <textarea rows="4" cols="40"></textarea><br />
-    	<input type="submit" />
-    </div>
+<meta charset=UTF-8" />
 
-    <div id="sidebar">
-      <h2>Instructions</h2>
-      <p>Click on various fields</p>
-      <p>Edit / update them, or add new fields</p>
-      <p>Save when you're done</p>
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/screen.css" />
+<link rel="alternate" type="application/atom+xml" 
+      title="Atom Feed" href="{{ feedPath }}"/>
+
+</head>
+<body>
+
+	<!-- header starts-->
+	<div id="header-wrap"><div id="header" class="container_16">						
+		
+		<h1 id="logo-text"><a href="index.html" title="">Skim</a></h1>
+		<p id="intro">Simple knowledgebase for insightful metabolomics</p>
+		
+		<!-- navigation -->
+		<div  id="nav">
+			<ul>
+				<li><a href="../../index.html">Home</a></li>
+				<li><a href="../../pathway_explorer.html">Pathways</a></li>
+				<li id="current"><a href="../../_list/notebook/recent-posts?descending=true&limit=5">Notebook</a></li>
+				<li><a href="collaborations.html">Collaborations</a></li>
+				<li><a href="support.html">Support</a></li>		
+			</ul>		
+		</div>		
+		
+		<div id="header-image">
+			<div id="user-info">
+				<div class="sidemenu" id="account"></div>
+				<div class="sidemenu" id="profile"></div>
+			</div>
+		</div> 		
+		
+		<form id="quick-search" action="index.html" method="get" >
+			<p>
+			<label for="qsearch">Search:</label>
+			<input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
+			<input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="../../images/search.gif" />
+			</p>
+		</form>					
+	
+	<!-- header ends here -->
+	</div></div>
+	
+	<!-- content starts -->
+	<div id="content-outer"><div id="content-wrapper" class="container_16">
+	
+		<!-- main -->
+		<div id="main" class="grid_8">
+			
+			<h2><a href="index.html">New insight</a></h2>
+			
+			<div id="tagcloud"></div>	
+			<!-- form to create a post -->
+			<form id="new-post" action="new.html" method="post">
+				<h3>{{pageTitle}}</h3>
+				<p>
+					<label>Title</label><br/>
+					<input type="text" size="60" name="title" value="{{title}}"/>
+				</p>
+			  <p><label for="body">Body</label>
+			  <textarea name="body" rows="28" cols="52">{{body}}</textarea></p>
+			  <p>
+				<label for="tags">Add tags - split by ','</label>
+				<input size="50" type="text" name="tags" value="{{tags}}"/>
+			  </p>
+			  <p>
+				<input id="preview" type="button" value="Preview"/>
+				<input type="submit" value="Save &rarr;"/> 
+				<span id="saved" style="display:none;">Saved</span>
+				</p>
+			</form>
+    		<a target="_new" href="http://warpedvisions.org/projects/markdown-cheat-sheet/">Markdown help</a>
+      		<div id="show-preview"></div>
+					
+		</div>
+			
+					
+		<!-- left-columns starts -->
+		<div id="left-columns" class="grid_8">
+			
+			<div class="grid_4 alpha">
+				<h3>News Feed</h3>
+					<div id="news_feed"></div>		
+			</div>	
+	
+		
+			<div class="grid_4 omega">
+			    
+				<div class="sidemenu" id="items"></div>
+				
+			</div>
+		
+		
+		<!-- end left-columns -->
+		</div>		
+	
+	<!-- contents end here -->	
+	</div></div>
+
+	<!-- footer starts here -->	
+	<div id="footer-wrapper" class="container_16">
+	
+		<div id="footer-content">
+		
+			<div class="grid_8">
+		
+				<h3>Resource Links</h3>			
+				<p>
+				<a href="index.html">Read more...</a>
+				</p>
+
+				<ul class="footer-list">				
+                    <li><a href="http://abe-bhaleraolab.age.uiuc.edu" title="Bhalerao Lab">BhaleraoLab -
+                        <span>Homepage at Agricultural and Biological Engineering</span></a>
+                    </li>
+				</ul>			
+						
+			</div>
+			
+			<div class="grid_8">
+					
+				<h3>Image Gallery </h3>					
+				<p class="thumbs">
+					<a href="index.html"><img src="../../images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+					<a href="index.html"><img src="../../images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+					<a href="index.html"><img src="../../images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+				</p>	
+			<!--
+				<h3>About</h3>			
+				<p>
+				<a href="http://getfirefox.com/"><img src="../images/gravatar.jpg" width="40" height="40" alt="firefox" class="float-left" /></a>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
+				Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
+				posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum 
+				odio, ac blandit ante orci ut diam.</p>
+				<p>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
+				Cras id urna. <a href="index.html">Learn more...</a></p>
+			-->		
+			</div>	
+		
+		</div>
+	
+		<div id="footer-bottom">
+	
+			<p class="bottom-left">			
+			&nbsp; &copy; 2011 Kaustubh D. Bhalerao <br />
+			Agricultural and Biological Engineering </br>
+			University of Illinois at Urbana-Champaign.
+			Design by <a href="http://www.styleshout.com/">styleshout</a>
+			</p>	
+			
+			<p class="bottom-right" >
+				<a href="index.html">Home</a> |
+				<a href="index.html">Sitemap</a> |
+				<a href="index.html">RSS Feed</a> |						
+				<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | 
+		   	    <a href="http://validator.w3.org/check/referer">XHTML</a>
+			</p>
+	
+		</div>	
+			
 	</div>
-  </body>
+	<!-- footer ends here -->
+
+</body>
+	{{>scripts}}
+	<script src="../../js/jquery.scrollTo.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var opts = {};
+		if(window.location.host == 'abe-bhaleraolab.age.uiuc.edu') {
+			opts = {'urlPrefix' : '/couchdb'};
+			
+			//google analytics code
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-19114222-1']);
+			  _gaq.push(['_trackPageview']);
+			
+			  (function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+		}
+		$.couch.app(function(app) {
+			$('.date').prettyDate();
+			$("#account").evently("account", app);
+			$("#profile").evently("profile", app);
+			$.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
+			$("#items").evently("items", app);
+			$("#add_new_insight").evently($.extend(true, 
+				app.ddoc.vendor.couchapp.evently.account, 
+				app.ddoc.evently.insights), app);
+				var path = app.require("vendor/couchapp/lib/path").init(app.req);
+				var postForm, blog = app.require("lib/blog");
+				
+				// extend the tagcloud so that clicks add tags to the current post
+				var tagcloud = $.extend(true, {}, this.ddoc.evently.tagcloud, {
+				_init : {
+				  selectors : {
+					a : {
+					  click : function() {
+						var tag = $(this).text();
+						var tags = $("input[name=tags]").val();
+						if (tags) tags = tags+", ";
+						$("input[name=tags]").val(tags + tag);
+						return false;
+					  }
+					}
+				  }
+				}
+				});
+				$("#tagcloud").evently(tagcloud, this);
+				var postDoc = {{{doc}}};
+				
+				$('label[for=body]').append(' <em>with '+(postDoc.format||'html')+'</em>');
+				$("form#new-post").submit(function() {
+				postDoc.author = $$("#account").userCtx.name;
+				postDoc.body = $("textarea[name=body]").val();
+				postDoc.title = $("input[name=title]").val();
+				var dtags = [], tags = $("input[name=tags]").val().split(",");
+				for(var i in tags) {
+				  dtags.push($.trim(tags[i]));
+				}
+				postDoc.tags = dtags;
+				if (!postDoc.created_at) {
+				  postDoc.created_at = new Date();
+				}
+				if (!postDoc._id) {
+				  postDoc._id = blog.slugifyString(postDoc.title);
+				}
+				app.db.saveDoc(postDoc, {
+				  success : function(resp) {
+					$("#saved").text("Saved _rev: "+resp.rev).fadeIn(500).fadeOut(6000);
+					//$('h1').html('Editing <a href="'+path.show('post',resp.id)+'">'+resp.id+'</a> by '+postDoc.author);
+				  }
+				});
+				return false;
+				});
+				
+				if (postDoc._id) {
+				$('#preview').before('<input type="button" id="delete" value="Delete Post"/> ');
+				$("#delete").click(function() {
+				  app.db.deleteDoc(postDoc, {
+					success : function(resp) {
+					  $("h1").text("Deleted "+resp.id);
+					  $('form#new-post input').attr('disabled', true);
+					}
+				  });
+				  return false;
+				});
+				}
+				
+				$("#preview").click(function() {
+				var markdown = app.require("vendor/couchapp/lib/markdown");
+				var html = markdown.encode($("textarea[name=body]").val());
+				$('#show-preview').html(html);
+				$('body').scrollTo('#show-preview', {duration: 500});
+				});
+		}, opts);
+	</script>
 </html>

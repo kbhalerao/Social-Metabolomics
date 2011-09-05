@@ -59,6 +59,24 @@ div.avatar img {
   height : 40px;
 }
 
+#tagcloud {
+  float:left;
+  width:220px;
+  margin:2ex 1em;
+}
+
+.tags a, #tagcloud a {
+  color:#bbb;
+}
+.tags a:hover, #tagcloud a:hover {
+  color:#9b9;
+}
+
+.tags, .by {
+  font-size:80%;
+  color:#666;
+  margin-top:0;
+}
 
 /* Headers */
 h1, h2, h3, h4 {
@@ -89,7 +107,21 @@ dd {
 
 p, dl { padding: 10px 15px; }
 
+div#user-info {
+	position : relative;
+	top : 135px;
+	left : 20px;
+}
+
 /* Images */
+img.gravatar {
+  width:40px;
+  height:40px;
+  float:left;
+  margin:2px 8px;
+  border:2px solid #fff;
+}
+
 img {
 	background: #FAFAFA;
    border: 1px solid #DCDCDC;
@@ -101,6 +133,8 @@ img.float-right {
 img.float-left {
   	margin: 5px 10px 10px 0px;
 }
+
+
 
 code {
   	margin: 3px 0;

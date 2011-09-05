@@ -22,13 +22,18 @@
 			<ul>
 				<li id="current"><a href="index.html">Home</a></li>
 				<li><a href="pathway_explorer.html">Pathways</a></li>
-				<li><a href="blog.html">Notebook</a></li>
-				<li><a href="index.html">Collaborations</a></li>
-				<li><a href="index.html">Support</a></li>		
+				<li><a href="_list/notebook/recent-posts?descending=true&limit=5">Notebook</a></li>
+				<li><a href="collaborations.html">Collaborations</a></li>
+				<li><a href="support.html">Support</a></li>			
 			</ul>		
 		</div>		
 		
-		<div id="header-image"></div>		
+		<div id="header-image">
+			<div id="user-info">
+				<div class="sidemenu" id="account"></div>
+				<div class="sidemenu" id="profile"></div>
+			</div>
+		</div>		
 		
 		<form id="quick-search" action="index.html" method="get" >
 			<p>
@@ -59,6 +64,10 @@
 			and by developing novel tools to query, aggregate and analyze this 
 			collective pool of knowledge, we can address the sore lack of tools
 			for producing biologically relevant knowledge based on quantitative information.</p>
+			<p><strong>Skim is currently under testing</strong>. Feel free to play around, but 
+			features, layouts and other things may be altered considerably. 
+			Feel free to leave a notebook post with the tag "feature request" to 
+			suggest new features!</p>
 			<!--
 			<p class="postmeta">		
 			<a href="index.html" class="readmore">Read more</a> |
@@ -160,12 +169,14 @@
 				</div>
 				<div class="featured-post">
 					<h3>Latest tool</h3>
-					<h4><a href="index.html">Cluster chart</a></h4>
+					<h4><a href="_list/notebook/recent-posts?descending=true&limit=5">Notebook</a></h4>
 					<p>
-						An algorithm to cluster insights into common themes
+						Currently just a blog implementation. Comes with tagging 
+						and word clouds. This notebook will feature a mechanism by 
+						you could follow other authors (which you specify) in your feed stream
 					</p>
 				
-					<p class="align-right">PowerTool</p>
+					<p class="align-right">kbhalerao</p>
 				
 					<h3>Latest insight</h3>
 					<h4><a href="index.html">New insights on glucose</a></h4>
@@ -184,8 +195,7 @@
 			
 			<div class="grid_4 omega">
 				
-				<div class="sidemenu" id="account"></div>
-				<div class="sidemenu" id="profile"></div>
+				
 				<div class="sidemenu" id="items"></div>
 			
 				

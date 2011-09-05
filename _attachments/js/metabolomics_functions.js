@@ -23,7 +23,7 @@ function makeButtons() {
                 keggID = data.rows[i].value.KeggID;  
                 html = '<div><tr>' +  
                 '<td><input class="check" type="checkbox" id="' + doc_id + '">&nbsp;&nbsp;' + 
-                name + '</input></td> '+  
+                '<a title="Add your insights" href="#">' + name + '</a></input></td> '+  
                 //'<td>' + name + '</td> ' +  
                 //'<td>' + keggID + '</td> ' +  
                 //'<td><a href="#" class="edit" id="' + doc_id + '">edit</a></td> '+  
