@@ -3,7 +3,7 @@ function(head, req) {
   var ddoc = this;
   var Mustache = require("lib/mustache");
   var List = require("vendor/couchapp/lib/list");
-  var path = require("vendor/couchapp/lib/path").init(req);
+  var path = require("vendor/couchapp/lib/path").init(req, ["couchdb"]);
   var Atom = require("vendor/couchapp/lib/atom");
 
   var indexPath = path.list('index','recent-posts',{descending:true, limit:10});

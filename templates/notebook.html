@@ -183,9 +183,9 @@
 </body>
 	{{>scripts}}
 	<script type="text/javascript" charset="utf-8">
-		var opts = {};
+		var u = "";
 		if(window.location.host == 'abe-bhaleraolab.age.uiuc.edu') {
-			opts = {'urlPrefix' : '/couchdb'};
+			u = '/couchdb';
 			
 			//google analytics code
 			  var _gaq = _gaq || [];
@@ -207,10 +207,12 @@
 			$("#add_new_insight").evently($.extend(true, 
 				app.ddoc.vendor.couchapp.evently.account, 
 				app.ddoc.evently.insights), app);
+			$.evently.connect("#account", "#add_new_insight", ["loggedIn", "loggedOut"]);
 			$("#tagcloud").evently(this.ddoc.evently.tagcloud, this);
   				}, {
 				db : "{{db}}",
-				design : "{{design}}"	  
-		}, opts);
+				design : "{{design}}",
+				urlPrefix : u
+		});
 	</script>
 </html>

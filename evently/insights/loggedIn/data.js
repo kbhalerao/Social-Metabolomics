@@ -8,11 +8,13 @@ function(e, r) {
   };
   if (r.userCtx.roles.indexOf("_admin") != -1 || r.userCtx.roles.indexOf("author") != -1) {
     if (app.req.path.indexOf("post-page") == -1) {
-      data.postPath = path.show("edit")+"/";
+      //data.postPath = path.show("edit")+"/";
+      data.postPath = "../../_show/edit/";
       data.postMessage = "New post";
     } else {
-      data.postPath = path.show("edit", app.req.query.startkey[0]);
-      data.postMessage = "Edit this post.";
+      //data.postPath = path.show("edit", app.req.query.startkey[0]);
+      data.postPath = "../../_show/edit/" + app.req.query.startkey[0];
+      data.postMessage = "Edit this post";
     }    
   }
   return data;
